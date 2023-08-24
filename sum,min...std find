@@ -1,0 +1,277 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "c9457f06",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  subject  amount\n",
+      "0  python    1000\n",
+      "1    java    2000\n"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "from operator import add\n",
+    "from functools import reduce\n",
+    "codeing={'subject':['python','java'],'amount':[1000,2000]}\n",
+    "df=pd.DataFrame(codeing)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "c8d20060",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pandas as pd\n",
+    "codeing={'subject':['python','java'],'amount':[1000,2000]}\n",
+    "df=pd.DataFrame(codeing)\n",
+    "print(df)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "ce5de841",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  subject  amount\n",
+      "0  python    2000\n",
+      "1    java    4000\n"
+     ]
+    }
+   ],
+   "source": [
+    "df['amount']=df['amount'].map(lambda x:x*2)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "3eb019bd",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  subject\n",
+      "0  python\n",
+      "1    java\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "6000"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df2=df.filter(items=['subject'])\n",
+    "print(df2)\n",
+    "reduce(add,df.amount)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "6b05bbf2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   0   1  2  3\n",
+      "0  9   4  8  9\n",
+      "1  8  10  7  6\n",
+      "2  7   6  8  5\n"
+     ]
+    },
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>0</th>\n",
+       "      <th>1</th>\n",
+       "      <th>2</th>\n",
+       "      <th>3</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>sum</th>\n",
+       "      <td>24.0</td>\n",
+       "      <td>20.00000</td>\n",
+       "      <td>23.00000</td>\n",
+       "      <td>20.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>min</th>\n",
+       "      <td>7.0</td>\n",
+       "      <td>4.00000</td>\n",
+       "      <td>7.00000</td>\n",
+       "      <td>5.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>max</th>\n",
+       "      <td>9.0</td>\n",
+       "      <td>10.00000</td>\n",
+       "      <td>8.00000</td>\n",
+       "      <td>9.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>std</th>\n",
+       "      <td>1.0</td>\n",
+       "      <td>3.05505</td>\n",
+       "      <td>0.57735</td>\n",
+       "      <td>2.081666</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>count</th>\n",
+       "      <td>3.0</td>\n",
+       "      <td>3.00000</td>\n",
+       "      <td>3.00000</td>\n",
+       "      <td>3.000000</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>size</th>\n",
+       "      <td>3.0</td>\n",
+       "      <td>3.00000</td>\n",
+       "      <td>3.00000</td>\n",
+       "      <td>3.000000</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "          0         1         2          3\n",
+       "sum    24.0  20.00000  23.00000  20.000000\n",
+       "min     7.0   4.00000   7.00000   5.000000\n",
+       "max     9.0  10.00000   8.00000   9.000000\n",
+       "std     1.0   3.05505   0.57735   2.081666\n",
+       "count   3.0   3.00000   3.00000   3.000000\n",
+       "size    3.0   3.00000   3.00000   3.000000"
+      ]
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "df=pd.DataFrame([[9,4,8,9,],\n",
+    "                 [8,10,7,6],\n",
+    "                 [7,6,8,5]])\n",
+    "column=['maths','english','history','science']\n",
+    "print(df)\n",
+    "df.agg(['sum','min','max','std','count','size'])                "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 35,
+   "id": "72c6abb1",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "AttributeError",
+     "evalue": "'DataFrame' object has no attribute 'pd'",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[35], line 7\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m \u001b[38;5;21;01mpandas\u001b[39;00m \u001b[38;5;28;01mas\u001b[39;00m \u001b[38;5;21;01mpd\u001b[39;00m\n\u001b[0;32m      2\u001b[0m technologies\u001b[38;5;241m=\u001b[39m{\n\u001b[0;32m      3\u001b[0m           \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mcourses\u001b[39m\u001b[38;5;124m'\u001b[39m:[\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mpython\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mDBMS\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mJAVA\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mpython\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mspark\u001b[39m\u001b[38;5;124m\"\u001b[39m],\n\u001b[0;32m      4\u001b[0m           \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mfee\u001b[39m\u001b[38;5;124m'\u001b[39m:[\u001b[38;5;241m20000\u001b[39m,\u001b[38;5;241m25000\u001b[39m,\u001b[38;5;241m26000\u001b[39m,\u001b[38;5;241m22000\u001b[39m,\u001b[38;5;241m24000\u001b[39m],\n\u001b[0;32m      5\u001b[0m           \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mduration\u001b[39m\u001b[38;5;124m'\u001b[39m:[\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m30days\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m40days\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m35days\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m60days\u001b[39m\u001b[38;5;124m\"\u001b[39m,\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m30days\u001b[39m\u001b[38;5;124m\"\u001b[39m],\n\u001b[0;32m      6\u001b[0m           \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mdiscount\u001b[39m\u001b[38;5;124m'\u001b[39m:[\u001b[38;5;241m10000\u001b[39m,\u001b[38;5;241m2300\u001b[39m,\u001b[38;5;241m1200\u001b[39m,\u001b[38;5;241m2500\u001b[39m,\u001b[38;5;241m2000\u001b[39m]}\n\u001b[1;32m----> 7\u001b[0m df\u001b[38;5;241m.\u001b[39mpd\u001b[38;5;241m.\u001b[39mDataFrame(technologies)\n\u001b[0;32m      8\u001b[0m \u001b[38;5;28mprint\u001b[39m(df)\n",
+      "File \u001b[1;32mC:\\ProgramData\\anaconda3\\Lib\\site-packages\\pandas\\core\\generic.py:5902\u001b[0m, in \u001b[0;36mNDFrame.__getattr__\u001b[1;34m(self, name)\u001b[0m\n\u001b[0;32m   5895\u001b[0m \u001b[38;5;28;01mif\u001b[39;00m (\n\u001b[0;32m   5896\u001b[0m     name \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;129;01min\u001b[39;00m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_internal_names_set\n\u001b[0;32m   5897\u001b[0m     \u001b[38;5;129;01mand\u001b[39;00m name \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;129;01min\u001b[39;00m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_metadata\n\u001b[0;32m   5898\u001b[0m     \u001b[38;5;129;01mand\u001b[39;00m name \u001b[38;5;129;01mnot\u001b[39;00m \u001b[38;5;129;01min\u001b[39;00m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_accessors\n\u001b[0;32m   5899\u001b[0m     \u001b[38;5;129;01mand\u001b[39;00m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_info_axis\u001b[38;5;241m.\u001b[39m_can_hold_identifiers_and_holds_name(name)\n\u001b[0;32m   5900\u001b[0m ):\n\u001b[0;32m   5901\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28mself\u001b[39m[name]\n\u001b[1;32m-> 5902\u001b[0m \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28mobject\u001b[39m\u001b[38;5;241m.\u001b[39m\u001b[38;5;21m__getattribute__\u001b[39m(\u001b[38;5;28mself\u001b[39m, name)\n",
+      "\u001b[1;31mAttributeError\u001b[0m: 'DataFrame' object has no attribute 'pd'"
+     ]
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "technologies={\n",
+    "          'courses':[python\",\"DBMS\",\"JAVA\",\"python\",\"spark\"],\n",
+    "          'fee':[20000,25000,26000,22000,24000],\n",
+    "          'duration':[\"30days\",\"40days\",\"35days\",\"60days\",\"30days\"],\n",
+    "          'discount':[10000,2300,1200,2500,2000]}\n",
+    "dfpd.DataFrame(technologies)\n",
+    "print(df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d2bbbb21",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9cfe9b11",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
